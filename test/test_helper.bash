@@ -1,36 +1,36 @@
-unset RBENV_VERSION
-unset RBENV_DIR
+unset NODENV_VERSION
+unset NODENV_DIR
 
-RBENV_TEST_DIR="${BATS_TMPDIR}/rbenv"
-PLUGIN="${RBENV_TEST_DIR}/root/plugins/rbenv-aliases"
+NODENV_TEST_DIR="${BATS_TMPDIR}/nodenv"
+PLUGIN="${NODENV_TEST_DIR}/root/plugins/nodenv-aliases"
 
 # guard against executing this block twice due to bats internals
-if [ "$RBENV_ROOT" != "${RBENV_TEST_DIR}/root" ]; then
-  export RBENV_ROOT="${RBENV_TEST_DIR}/root"
-  export HOME="${RBENV_TEST_DIR}/home"
+if [ "$NODENV_ROOT" != "${NODENV_TEST_DIR}/root" ]; then
+  export NODENV_ROOT="${NODENV_TEST_DIR}/root"
+  export HOME="${NODENV_TEST_DIR}/home"
   local parent
 
-  export INSTALL_HOOK="${BATS_TEST_DIRNAME}/../etc/rbenv.d/install/autoalias.bash"
+  export INSTALL_HOOK="${BATS_TEST_DIRNAME}/../etc/nodenv.d/install/autoalias.bash"
 
   PATH=/usr/bin:/bin:/usr/sbin:/sbin
-  PATH="${RBENV_TEST_DIR}/bin:$PATH"
+  PATH="${NODENV_TEST_DIR}/bin:$PATH"
   PATH="${BATS_TEST_DIRNAME}/bin:$PATH"
   PATH="${BATS_TEST_DIRNAME}/../bin:$PATH"
-  PATH="${BATS_TEST_DIRNAME}/../rbenv/libexec:$PATH"
-  PATH="${BATS_TEST_DIRNAME}/../rbenv/test/libexec:$PATH"
-  PATH="${RBENV_ROOT}/shims:$PATH"
+  PATH="${BATS_TEST_DIRNAME}/../nodenv/libexec:$PATH"
+  PATH="${BATS_TEST_DIRNAME}/../nodenv/test/libexec:$PATH"
+  PATH="${NODENV_ROOT}/shims:$PATH"
   export PATH
 fi
 
 teardown() {
-  rm -rf "$RBENV_TEST_DIR"
+  rm -rf "$NODENV_TEST_DIR"
 }
 
 flunk() {
   { if [ "$#" -eq 0 ]; then cat -
     else echo "$@"
     fi
-  } | sed "s:${RBENV_TEST_DIR}:TEST_DIR:g" >&2
+  } | sed "s:${NODENV_TEST_DIR}:TEST_DIR:g" >&2
   return 1
 }
 
@@ -39,7 +39,7 @@ create_versions() {
   for v in $*
   do
     #echo "Created version: $d"
-    d="$RBENV_TEST_DIR/root/versions/$v"
+    d="$NODENV_TEST_DIR/root/versions/$v"
     mkdir -p "$d/bin"
     echo $v > "$d/RELEASE.txt"
     ln -nfs /bin/echo "$d/bin/ruby"
@@ -50,18 +50,18 @@ create_versions() {
 # assert_alias_version alias version
 
 assert_alias_version() {
-  if [ ! -f $RBENV_ROOT/versions/$1/RELEASE.txt ]
+  if [ ! -f $NODENV_ROOT/versions/$1/RELEASE.txt ]
   then
     echo "Versions:"
-    (cd $RBENV_ROOT/versions ; ls -l)
+    (cd $NODENV_ROOT/versions ; ls -l)
   fi
-  assert_equal "$2" `cat $RBENV_ROOT/versions/$1/RELEASE.txt 2>&1`
+  assert_equal "$2" `cat $NODENV_ROOT/versions/$1/RELEASE.txt 2>&1`
 }
 
 assert_alias_missing() {
-  if [ -f $RBENV_ROOT/versions/$1/RELEASE.txt ]
+  if [ -f $NODENV_ROOT/versions/$1/RELEASE.txt ]
   then
-    assert_equal "no-version" `cat $RBENV_ROOT/versions/$1/RELEASE.txt 2>&1`
+    assert_equal "no-version" `cat $NODENV_ROOT/versions/$1/RELEASE.txt 2>&1`
   fi
 }
 

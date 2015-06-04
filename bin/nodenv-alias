@@ -2,9 +2,9 @@
 #
 # Summary: Symlink a short name to an exact version
 #
-# Usage: rbenv alias <name> [<version> | --auto | --remove]
-#        rbenv alias --auto
-#        rbenv alias [--list]
+# Usage: nodenv alias <name> [<version> | --auto | --remove]
+#        nodenv alias --auto
+#        nodenv alias [--list]
 #
 # Symlink a short name to an exact version.  Passing a second argument of
 # --auto selects the latest patch release of the given point version.  Passing
@@ -12,7 +12,7 @@
 
 shopt -s nullglob
 
-cd "$RBENV_ROOT/versions"
+cd "$NODENV_ROOT/versions"
 
 resolve_link() {
   $(type -p greadlink readlink | head -1) "$1"
@@ -80,17 +80,17 @@ point_releases() {
   echo_lines_without_symlinks [0-9].[0-9].[0-9]|sed -e 's/\.[0-9]\+$//'|sort -u
 }
 
-# Provide rbenv completions
+# Provide nodenv completions
 if [ --complete = "$1" ]; then
   shift
   if [ "$#" = 1 ]; then
     echo --auto
     echo --remove
-    rbenv-versions --bare
+    nodenv-versions --bare
   elif [ "$#" = 0 ]; then
     echo --auto
     echo --list
-    { point_releases; rbenv-versions --bare; } | sort -u
+    { point_releases; nodenv-versions --bare; } | sort -u
   fi
   exit 0
 fi
@@ -99,8 +99,8 @@ case "$#" in
 
   2)
     case "$1" in --*)
-      case "$2" in -*) exec rbenv-help alias ;; esac
-      exec rbenv-alias "$2" "$1" ;;
+      case "$2" in -*) exec nodenv-help alias ;; esac
+      exec nodenv-alias "$2" "$1" ;;
     esac
     if [ -e "$1" -a ! -L "$1" ]; then
       echo "Not clobbering $1" >&2
@@ -140,7 +140,7 @@ case "$#" in
         done
         ;;
       -*)
-        rbenv-help alias
+        nodenv-help alias
         ;;
       *)
         if [ -L "$1" ]; then
@@ -163,6 +163,6 @@ case "$#" in
     ;;
 
   *)
-    rbenv-help alias
+    nodenv-help alias
     ;;
 esac

@@ -2,16 +2,16 @@
 #
 # Summary: Remove one or more symlinks in the versions directory
 #
-# Usage: rbenv unalias <alias> [<alias> ...]
+# Usage: nodenv unalias <alias> [<alias> ...]
 
-# Provide rbenv completions
+# Provide nodenv completions
 if [ --complete = "$1" ]; then
-  rbenv-alias --list | awk '{print $1}'
+  nodenv-alias --list | awk '{print $1}'
   exit 0
 fi
 
-[ $# -gt 0 ] || exec rbenv-help alias
+[ $# -gt 0 ] || exec nodenv-help alias
 
 for arg in "$@"; do
-  rbenv-alias "$arg" --remove
+  nodenv-alias "$arg" --remove
 done

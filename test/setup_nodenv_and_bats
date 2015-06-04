@@ -10,13 +10,13 @@ else
   git clone https://github.com/sstephenson/bats.git 
 fi
 
-if [ -d rbenv ]; then
+if [ -d nodenv ]; then
   ( 
-    cd rbenv
-    echo Updating rbenv:
+    cd nodenv
+    echo Updating nodenv:
     git pull
   )
 else
-  git clone https://github.com/sstephenson/rbenv.git
+  git clone https://github.com/sstephenson/nodenv.git
 fi
 
