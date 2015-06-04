@@ -2,38 +2,38 @@
 
 load test_helper
 
-@test "nodenv-alias 1.8.7 --auto" {
-  create_versions 1.8.7-p371
-  create_versions 1.8.7-p99
-  create_versions 1.8.7-p100
+@test "nodenv-alias 0.8 --auto" {
+  create_versions 0.8.0
+  create_versions 0.8.5
+  create_versions 0.8.10
 
-  run nodenv-alias 1.8.7 --auto
+  run nodenv-alias 0.8 --auto
   assert_success
-  assert_alias_version 1.8.7 1.8.7-p371
+  assert_alias_version 0.8 0.8.10
 }
 
-@test "nodenv-alias name 1.8.7-p100" {
-  create_versions 1.8.7-p371
-  create_versions 1.8.7-p99
-  create_versions 1.8.7-p100
+@test "nodenv-alias name 0.8.5" {
+  create_versions 0.8.0
+  create_versions 0.8.5
+  create_versions 0.8.10
 
-  run nodenv-alias name 1.8.7-p100
+  run nodenv-alias name 0.8.5
   assert_success
-  assert_alias_version name 1.8.7-p100
+  assert_alias_version name 0.8.5
 }
 
 @test "nodenv-alias --auto" {
-  create_versions 1.8.7-p371
-  create_versions 1.8.7-p99
-  create_versions 1.8.7-p100
+  create_versions 0.8.0
+  create_versions 0.8.5
+  create_versions 0.8.10
 
-  create_versions 1.2.3-p99-perf
-  create_versions 1.2.3-p234-beta
-  create_versions 1.2.3-p1-perf
+  create_versions 0.10.1
+  create_versions 0.10.7
+  create_versions 0.10.23
 
   run nodenv-alias --auto
   assert_success
-  assert_alias_version 1.8.7 1.8.7-p371
-  assert_alias_version 1.2.3 1.2.3-p234-beta
+  assert_alias_version 0.8 0.8.10
+  assert_alias_version 0.10 0.10.23
 
 }
