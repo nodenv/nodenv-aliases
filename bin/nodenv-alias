@@ -114,7 +114,7 @@ case "$#" in
       fi
     elif [ --auto = "$2" ]; then
       case "$1" in
-        *.*.*)
+        *.*)
           auto_symlink_point "$1"
           ;;
         *)
