@@ -54,8 +54,12 @@ echo_lines_without_symlinks() {
   done
 }
 
+sort_semver() {
+  sort -n -t. -k 1,1 -k 2,2 -k 3,3
+}
+
 auto_for_point() {
-  local highest="$(echo_lines_without_symlinks $1* | sort -n | tail -1)"
+  local highest="$(echo_lines_without_symlinks $1* | sort_semver | tail -1)"
   echo "$highest"
 }
 
