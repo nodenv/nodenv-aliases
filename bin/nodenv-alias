@@ -55,7 +55,7 @@ echo_lines_without_symlinks() {
 }
 
 auto_for_point() {
-  local highest="$(echo_lines_without_symlinks $1*|sort -n|tail -1)"
+  local highest="$(echo_lines_without_symlinks $1* | sort -n | tail -1)"
   echo "$highest"
 }
 
@@ -70,7 +70,7 @@ auto_symlink_point() {
 }
 
 point_releases() {
-  echo_lines_without_symlinks *.*.*|sed -E -e 's/\.[0-9]+$//'|sort -u
+  echo_lines_without_symlinks *.*.* | sed -E -e 's/\.[0-9]+$//' | sort -u
 }
 
 # Provide nodenv completions
@@ -126,7 +126,7 @@ case "$#" in
       --list)
         list
         ;;
-      --auto|--all)
+      --auto | --all)
         cleanup_invalid
         for point in $(point_releases); do
           auto_symlink_point $point
