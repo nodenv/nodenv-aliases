@@ -4,23 +4,23 @@ load test_helper
 
 @test "running nodenv-install auto installs an alias" {
 
-  run nodenv-install 1.9.3-p123
+  run nodenv-install 0.10.36
   assert_success
-  assert_line 'Installed fake version 1.9.3-p123'
-  assert_line '1.9.3 => 1.9.3-p123'
+  assert_line 'Installed fake version 0.10.36'
+  assert_line '0.10 => 0.10.36'
 
-  assert_alias_version 1.9.3 1.9.3-p123
+  assert_alias_version 0.10 0.10.36
 
-  run nodenv-install 1.9.3-p99
+  run nodenv-install 0.10.22
   assert_success
-  assert_alias_version 1.9.3 1.9.3-p123
-  assert_line 'Installed fake version 1.9.3-p99'
+  assert_alias_version 0.10 0.10.36
+  assert_line 'Installed fake version 0.10.22'
 
-  run nodenv-install 1.9.3-p200
+  run nodenv-install 0.10.38
   assert_success
-  assert_alias_version 1.9.3 1.9.3-p200
-  assert_line 'Installed fake version 1.9.3-p200'
-  assert_line '1.9.3 => 1.9.3-p200'
+  assert_alias_version 0.10 0.10.38
+  assert_line 'Installed fake version 0.10.38'
+  assert_line '0.10 => 0.10.38'
 
 }
 

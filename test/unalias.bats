@@ -4,12 +4,12 @@ load test_helper
 
 @test "running unalias removes an alias" {
 
-  create_versions 1.8.7-p100
-  run nodenv-alias 1.8.7 --auto
+  create_versions 0.8.7
+  run nodenv-alias 0.8 --auto
   assert_success
 
-  run nodenv-unalias 1.8.7
+  run nodenv-unalias 0.8
   assert_success
-  assert_alias_missing 1.8.7
+  assert_alias_missing 0.8
 
 }
