@@ -70,14 +70,7 @@ auto_symlink_point() {
 }
 
 point_releases() {
-  # 1.9.3-p123
-  # echo_lines_without_symlinks *.*.*-*|sed -e 's/-.*//'|sort -u
-
-  # iojs-1.7.3
-  echo_lines_without_symlinks *-*.*.*|sed -e 's/\.[0-9]\+$//'|sort -u
-
-  # 0.8.0
-  echo_lines_without_symlinks [0-9].[0-9].[0-9]|sed -e 's/\.[0-9]\+$//'|sort -u
+  echo_lines_without_symlinks *.*.*|sed -e 's/\.[0-9]\+$//'|sort -u
 }
 
 # Provide nodenv completions
