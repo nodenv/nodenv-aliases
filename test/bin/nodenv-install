@@ -4,8 +4,6 @@
 #
 # Usage: nodenv install version
 #
-# Shows PATH and any variables that start with GEM, RAILS, NODENV or RUBY
-#
 
 set -e
 [ -n "$NODENV_DEBUG" ] && set -x

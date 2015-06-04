@@ -42,7 +42,7 @@ create_versions() {
     d="$NODENV_TEST_DIR/root/versions/$v"
     mkdir -p "$d/bin"
     echo $v > "$d/RELEASE.txt"
-    ln -nfs /bin/echo "$d/bin/ruby"
+    ln -nfs /bin/echo "$d/bin/node"
   done
 }
 
