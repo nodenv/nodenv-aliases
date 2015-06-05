@@ -6,6 +6,7 @@ strip_patch() {
 
 autoalias() {
   if [ "$STATUS" = 0 ]; then
+    # this isn't currently used by nodenv
     case "$VERSION_NAME" in
       *[0-9]-*-*)
         local patch="$(echo $VERSION_NAME|sed -e 's/-[^-]*$//')"
