@@ -2,38 +2,53 @@
 
 load test_helper
 
-@test "rbenv-alias 1.8.7 --auto" {
-  create_versions 1.8.7-p371
-  create_versions 1.8.7-p99
-  create_versions 1.8.7-p100
+@test "nodenv-alias 0.8 --auto" {
+  create_versions 0.8.0
+  create_versions 0.8.5
+  create_versions 0.8.10
 
-  run rbenv-alias 1.8.7 --auto
+  run nodenv-alias 0.8 --auto
   assert_success
-  assert_alias_version 1.8.7 1.8.7-p371
+  assert_alias_version 0.8 0.8.10
 }
 
-@test "rbenv-alias name 1.8.7-p100" {
-  create_versions 1.8.7-p371
-  create_versions 1.8.7-p99
-  create_versions 1.8.7-p100
+@test "nodenv-alias iojs-1.2 --auto" {
+  create_versions iojs-1.2.0
+  create_versions iojs-1.2.5
+  create_versions iojs-1.2.10
 
-  run rbenv-alias name 1.8.7-p100
+  run nodenv-alias iojs-1.2 --auto
   assert_success
-  assert_alias_version name 1.8.7-p100
+  assert_alias_version iojs-1.2 iojs-1.2.10
 }
 
-@test "rbenv-alias --auto" {
-  create_versions 1.8.7-p371
-  create_versions 1.8.7-p99
-  create_versions 1.8.7-p100
+@test "nodenv-alias name 0.8.5" {
+  create_versions 0.8.0
+  create_versions 0.8.5
+  create_versions 0.8.10
 
-  create_versions 1.2.3-p99-perf
-  create_versions 1.2.3-p234-beta
-  create_versions 1.2.3-p1-perf
-
-  run rbenv-alias --auto
+  run nodenv-alias name 0.8.5
   assert_success
-  assert_alias_version 1.8.7 1.8.7-p371
-  assert_alias_version 1.2.3 1.2.3-p234-beta
+  assert_alias_version name 0.8.5
+}
 
+@test "nodenv-alias --auto" {
+  create_versions 0.8.0
+  create_versions 0.8.5
+  create_versions 0.8.10
+
+  create_versions 0.10.1
+  create_versions 0.10.7
+  create_versions 0.10.23
+
+  create_versions iojs-1.10.1
+  create_versions iojs-1.10.7
+  create_versions iojs-1.10.23
+
+  run nodenv-alias --auto
+
+  assert_success
+  assert_alias_version 0.8 0.8.10
+  assert_alias_version 0.10 0.10.23
+  assert_alias_version iojs-1.10 iojs-1.10.23
 }

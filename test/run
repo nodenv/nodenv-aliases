@@ -3,8 +3,8 @@
 if [ ! -f test/run ]; then
   cd ..
 fi
-if [ ! -d bats -o ! -d rbenv ]; then
-  test/setup_rbenv_and_bats
+if [ ! -d bats -o ! -d nodenv ]; then
+  test/setup_nodenv_and_bats
 fi
 
 exec bats/bin/bats test/$1

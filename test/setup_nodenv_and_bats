@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ -d bats ]; then
+  (
+    cd bats
+    echo Updating bats:
+    git pull
+  )
+else
+  git clone https://github.com/sstephenson/bats.git
+fi
+
+if [ -d nodenv ]; then
+  (
+    cd nodenv
+    echo Updating nodenv:
+    git pull
+  )
+else
+  git clone https://github.com/OiNutter/nodenv.git
+fi
+

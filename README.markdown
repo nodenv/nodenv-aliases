@@ -1,28 +1,47 @@
-# Aliases for rbenv Ruby versions
+# Aliases for nodenv Node versions
 
-Invoke `rbenv alias <name> <version>` to make a symbolic link from `<name>` to
-`<version>` in the [rbenv][] versions directory, effectively creating an
+Invoke `nodenv alias <name> <version>` to make a symbolic link from `<name>` to
+`<version>` in the [nodenv][] versions directory, effectively creating an
 alias.  The cool part is that if you pass in a point release as the name, you
 can give `--auto` to link to the latest installed patch level.  For example,
-`rbenv alias 1.8.7 --auto` will automatically create an alias from `1.8.7` to
-`1.8.7-p371` (or whatever the most recent version you have installed is).
+`nodenv alias 0.10 --auto` will automatically create an alias from `0.10` to
+`0.10.36` (or whatever the most recent version you have installed is).
 
-Plus, if you're using [ruby-build][], `rbenv install A.B.C-pXXX` automatically
-invokes `rbenv alias A.B.C --auto`, so you'll always have up to date aliases
-for point releases.
-
-Whether it's a good idea to use these aliases in a `.ruby-version` file, I
-cannot say.  I created this plugin to find out.  If your only concern is
-having to reinstall gems every time you install a new patch release, check out
-[rbenv-communal-gems][].
+Plus, if you're using [node-build][], `nodenv install major.minor.patch`
+automatically invokes `nodenv alias major.minor --auto`, so you'll always have
+up to date aliases for point releases.
 
 ## Installation
 
-    mkdir -p ~/.rbenv/plugins
-    git clone git://github.com/tpope/rbenv-aliases.git \
-      ~/.rbenv/plugins/rbenv-aliases
-    rbenv alias --auto
+    git clone https://github.com/jasonkarns/nodenv-aliases.git $(nodenv root)/plugins/nodenv-aliases
 
-[rbenv]: https://github.com/sstephenson/rbenv
-[ruby-build]: https://github.com/sstephenson/ruby-build
-[rbenv-communal-gems]: https://github.com/tpope/rbenv-communal-gems
+## Usage
+
+Create a `major.minor` alias for each installed minor release:
+
+    nodenv alias --auto
+
+Create a `major.minor` alias for the highest minor release of, say 0.8:
+
+    nodenv alias 0.8 --auto
+
+Create a named alias for a specific release:
+
+    nodenv alias my-favorite-node 0.10.36
+
+Remove an alias:
+
+    nodenv unalias <alias-name>
+
+or
+
+    nodenv alias <alias-name> --remove
+
+## Credits
+
+Forked from [rbenv-aliases][] originally by [tpope][] and modified to work for nodenv.
+
+[nodenv]: https://github.com/OiNutter/nodenv
+[node-build]: https://github.com/OiNutter/node-build
+[rbenv-aliases]: https://github.com/tpope/rbenv-aliases
+[tpope]: https://github.com/tpope

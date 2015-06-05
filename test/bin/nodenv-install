@@ -2,13 +2,11 @@
 #
 # Summary: Fake install program
 #
-# Usage: rbenv install version
-#
-# Shows PATH and any variables that start with GEM, RAILS, RBENV or RUBY
+# Usage: nodenv install version
 #
 
 set -e
-[ -n "$RBENV_DEBUG" ] && set -x
+[ -n "$NODENV_DEBUG" ] && set -x
 
 # Define `before_install` and `after_install` functions that allow
 # plugin hooks to register a string of code for execution before or
@@ -29,9 +27,9 @@ fi
 STATUS=0
 
 case "$1" in
-[0-9].*)
+*[0-9].*)
         VERSION_NAME=$1
-        d="$RBENV_ROOT/versions/$1"
+        d="$NODENV_ROOT/versions/$1"
         mkdir -p "$d"
         echo $1 > "$d/RELEASE.txt"
         echo "Installed fake version $1"
@@ -42,7 +40,7 @@ case "$1" in
 
         ;;
 *)
-        echo 'Usage: rbenv-install version'
+        echo 'Usage: nodenv-install version'
         ;;
 esac
 exit $STATUS
