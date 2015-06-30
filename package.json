@@ -1,0 +1,28 @@
+{
+  "name": "nodenv-aliases",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Create aliases for nodenv Node versions",
+  "author": "Jason Karns <jason@karns.name> (http://jason.karns.name/)",
+  "homepage": "https://github.com/jasonkarns/nodenv-aliases#readme",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test/setup_nodenv && bats test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonkarns/nodenv-aliases.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jasonkarns/nodenv-aliases/issues"
+  },
+  "keywords": [
+    "node",
+    "nodenv",
+    "alias",
+    "version"
+  ],
+  "license": "MIT"
+}
