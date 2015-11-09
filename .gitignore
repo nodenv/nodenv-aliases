@@ -1,3 +1,2 @@
-bats/
-rbenv/
 nodenv/
+node_modules/
