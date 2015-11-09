@@ -18,6 +18,10 @@
   "bugs": {
     "url": "https://github.com/jasonkarns/nodenv-aliases/issues"
   },
+  "devDependencies": {
+    "bats": "^0.4.2",
+    "bats-assert": "^1.0.1"
+  },
   "keywords": [
     "node",
     "nodenv",
