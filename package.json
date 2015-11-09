@@ -9,7 +9,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "test/setup_nodenv && bats test"
+    "pretest": "test/setup_nodenv",
+    "test": "bats test"
   },
   "repository": {
     "type": "git",
