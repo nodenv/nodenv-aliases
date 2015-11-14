@@ -96,7 +96,7 @@ case "$#" in
 
   2)
     case "$1" in --*)
-      case "$2" in -*) nodenv-help alias ;; esac
+      case "$2" in -*) nodenv-help --usage alias ;; esac
       nodenv-alias "$2" "$1" ;;
     esac
     if [ -e "$1" -a ! -L "$1" ]; then
@@ -137,7 +137,7 @@ case "$#" in
         done
         ;;
       -*)
-        nodenv-help alias
+        nodenv-help --usage alias
         ;;
       *)
         if [ -L "$1" ]; then
@@ -160,6 +160,6 @@ case "$#" in
     ;;
 
   *)
-    nodenv-help alias
+    nodenv-help --usage alias
     ;;
 esac
