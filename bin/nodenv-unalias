@@ -10,7 +10,7 @@ if [ --complete = "$1" ]; then
   exit 0
 fi
 
-[ $# -gt 0 ] || exec nodenv-help alias
+[ $# -gt 0 ] || nodenv-help --usage alias
 
 for arg in "$@"; do
   nodenv-alias "$arg" --remove
