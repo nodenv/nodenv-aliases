@@ -96,8 +96,8 @@ case "$#" in
 
   2)
     case "$1" in --*)
-      case "$2" in -*) exec nodenv-help alias ;; esac
-      exec nodenv-alias "$2" "$1" ;;
+      case "$2" in -*) nodenv-help alias ;; esac
+      nodenv-alias "$2" "$1" ;;
     esac
     if [ -e "$1" -a ! -L "$1" ]; then
       echo "Not clobbering $1" >&2
