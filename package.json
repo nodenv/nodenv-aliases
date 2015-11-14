@@ -1,6 +1,6 @@
 {
   "name": "nodenv-aliases",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "Create aliases for nodenv Node versions",
   "author": "Jason Karns <jason@karns.name> (http://jason.karns.name/)",
