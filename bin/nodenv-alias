@@ -12,7 +12,7 @@
 
 shopt -s nullglob
 
-cd "$NODENV_ROOT/versions" || exit
+cd "$NODENV_ROOT/versions" || exit 1
 
 resolve_link() {
   $(type -p greadlink readlink | head -1) "$1"
@@ -98,8 +98,12 @@ case "$#" in
 
   2)
     case "$1" in --*)
-      case "$2" in -*) nodenv-help --usage alias ;; esac
-      nodenv-alias "$2" "$1" ;;
+      case "$2" in -*)
+        nodenv-help --usage alias >&2;
+        exit 1
+        ;;
+      esac
+      exec nodenv-alias "$2" "$1" ;;
     esac
     if [ -e "$1" ] && [ ! -L "$1" ]; then
       echo "Not clobbering $1" >&2
@@ -138,8 +142,12 @@ case "$#" in
           auto_symlink_point "$point"
         done
         ;;
+      --help)
+        exec nodenv-help alias
+        ;;
       -*)
-        nodenv-help --usage alias
+        nodenv-help --usage alias >&2
+        exit 1
         ;;
       *)
         if [ -L "$1" ]; then
@@ -162,6 +170,7 @@ case "$#" in
     ;;
 
   *)
-    nodenv-help --usage alias
+    nodenv-help --usage alias >&2
+    exit 1
     ;;
 esac
