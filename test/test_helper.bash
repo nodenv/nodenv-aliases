@@ -4,13 +4,11 @@ unset NODENV_VERSION
 unset NODENV_DIR
 
 NODENV_TEST_DIR="${BATS_TMPDIR}/nodenv"
-PLUGIN="${NODENV_TEST_DIR}/root/plugins/nodenv-aliases"
 
 # guard against executing this block twice due to bats internals
 if [ "$NODENV_ROOT" != "${NODENV_TEST_DIR}/root" ]; then
   export NODENV_ROOT="${NODENV_TEST_DIR}/root"
   export HOME="${NODENV_TEST_DIR}/home"
-  local parent
 
   export INSTALL_HOOK="${BATS_TEST_DIRNAME}/../etc/nodenv.d/install/autoalias.bash"
 
@@ -30,8 +28,7 @@ teardown() {
 
 # Creates fake version directories
 create_versions() {
-  for v in $*
-  do
+  for v; do
     #echo "Created version: $d"
     d="$NODENV_TEST_DIR/root/versions/$v"
     mkdir -p "$d/bin"
@@ -44,18 +41,16 @@ create_versions() {
 # assert_alias_version alias version
 
 assert_alias_version() {
-  if [ ! -f $NODENV_ROOT/versions/$1/RELEASE.txt ]
-  then
+  if [ ! -f "$NODENV_ROOT/versions/$1/RELEASE.txt" ]; then
     echo "Versions:"
-    (cd $NODENV_ROOT/versions ; ls -l)
+    ls -l "$NODENV_ROOT/versions"
   fi
-  assert_equal "$2" `cat $NODENV_ROOT/versions/$1/RELEASE.txt 2>&1`
+  assert_equal "$2" "$(cat "$NODENV_ROOT/versions/$1/RELEASE.txt" 2>&1)"
 }
 
 assert_alias_missing() {
-  if [ -f $NODENV_ROOT/versions/$1/RELEASE.txt ]
-  then
-    assert_equal "no-version" `cat $NODENV_ROOT/versions/$1/RELEASE.txt 2>&1`
+  if [ -f "$NODENV_ROOT/versions/$1/RELEASE.txt" ]; then
+    assert_equal "no-version" "$(cat "$NODENV_ROOT/versions/$1/RELEASE.txt" 2>&1)"
   fi
 }
 
