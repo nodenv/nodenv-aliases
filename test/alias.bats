@@ -3,9 +3,7 @@
 load test_helper
 
 @test "nodenv-alias 0.8 --auto" {
-  create_versions 0.8.0
-  create_versions 0.8.5
-  create_versions 0.8.10
+  create_versions 0.8.0  0.8.5  0.8.10
 
   run nodenv-alias 0.8 --auto
   assert_success
@@ -13,9 +11,7 @@ load test_helper
 }
 
 @test "nodenv-alias iojs-1.2 --auto" {
-  create_versions iojs-1.2.0
-  create_versions iojs-1.2.5
-  create_versions iojs-1.2.10
+  create_versions iojs-1.2.0  iojs-1.2.5  iojs-1.2.10
 
   run nodenv-alias iojs-1.2 --auto
   assert_success
@@ -23,9 +19,7 @@ load test_helper
 }
 
 @test "nodenv-alias name 0.8.5" {
-  create_versions 0.8.0
-  create_versions 0.8.5
-  create_versions 0.8.10
+  create_versions 0.8.0  0.8.5  0.8.10
 
   run nodenv-alias name 0.8.5
   assert_success
@@ -33,17 +27,9 @@ load test_helper
 }
 
 @test "nodenv-alias --auto" {
-  create_versions 0.8.0
-  create_versions 0.8.5
-  create_versions 0.8.10
-
-  create_versions 0.10.1
-  create_versions 0.10.7
-  create_versions 0.10.23
-
-  create_versions iojs-1.10.1
-  create_versions iojs-1.10.7
-  create_versions iojs-1.10.23
+  create_versions 0.8.0        0.8.5        0.8.10
+  create_versions 0.10.1       0.10.7       0.10.23
+  create_versions iojs-1.10.1  iojs-1.10.7  iojs-1.10.23
 
   run nodenv-alias --auto
 
