@@ -32,7 +32,7 @@ list() {
 
 cleanup_invalid() {
   local version
-  for version in *; do
+  for version in ${1:-*}; do
     if [ -L "$version" ] && [ ! -e "$(resolve_link "$version")" ]; then
       echo "Removing invalid link from $version to $(resolve_link "$version")"
       rm "$version"
@@ -116,7 +116,7 @@ case "$#" in
       fi
     elif [ --auto = "$2" ]; then
       case "$1" in
-        *.*) auto_symlink_point "$1" ;;
+        *.*) cleanup_invalid "$1" && auto_symlink_point "$1" ;;
         *) fail "Don't know how to automatically alias $1" ;;
       esac
     else
