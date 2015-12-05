@@ -11,6 +11,7 @@ if [ "$NODENV_ROOT" != "${NODENV_TEST_DIR}/root" ]; then
   export HOME="${NODENV_TEST_DIR}/home"
 
   export INSTALL_HOOK="${BATS_TEST_DIRNAME}/../etc/nodenv.d/install/autoalias.bash"
+  export UNINSTALL_HOOK="${BATS_TEST_DIRNAME}/../etc/nodenv.d/uninstall/autoalias.bash"
 
   PATH=/usr/bin:/bin:/usr/sbin:/sbin
   PATH="${NODENV_TEST_DIR}/bin:$PATH"
@@ -37,6 +38,14 @@ create_versions() {
   done
 }
 
+# Creates test aliases
+create_alias() {
+  local alias="$1"
+  local version="$2"
+
+  mkdir -p "$NODENV_ROOT/versions"
+  ln -nfs "$NODENV_ROOT/versions/$version" "$NODENV_ROOT/versions/$alias"
+}
 
 # assert_alias_version alias version
 
@@ -53,7 +62,6 @@ assert_alias_missing() {
     assert_equal "no-version" "$(cat "$NODENV_ROOT/versions/$1/RELEASE.txt" 2>&1)"
   fi
 }
-
 
 assert_line_starts_with() {
   if [ "$1" -ge 0 ] 2>/dev/null; then
