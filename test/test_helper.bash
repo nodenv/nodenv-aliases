@@ -37,6 +37,14 @@ create_versions() {
   done
 }
 
+# Creates test aliases
+create_alias() {
+  local alias="$1"
+  local version="$2"
+
+  mkdir -p "$NODENV_ROOT/versions"
+  ln -nfs "$NODENV_ROOT/versions/$version" "$NODENV_ROOT/versions/$alias"
+}
 
 # assert_alias_version alias version
 
@@ -53,7 +61,6 @@ assert_alias_missing() {
     assert_equal "no-version" "$(cat "$NODENV_ROOT/versions/$1/RELEASE.txt" 2>&1)"
   fi
 }
-
 
 assert_line_starts_with() {
   if [ "$1" -ge 0 ] 2>/dev/null; then
