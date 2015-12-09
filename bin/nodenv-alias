@@ -54,14 +54,19 @@ echo_lines_without_symlinks() {
   done
 }
 
-sort_semver() {
-  sort -n -t. -k 1,1 -k 2,2 -k 3,3
+sort_versions() {
+  local patch_start_point
+
+  case "$1" in
+    *.*.*) patch_start_point=$((${#1} + 3)) ;; # point_release string length + 1 (0 indexed) + 2 for `-p` separator
+    *.*)   patch_start_point=$((${#1} + 2)) ;; # point_release string length + 1 (0 indexed) + 1 for `.` separator
+  esac
+
+  sort -n -k "1.$patch_start_point"
 }
 
 auto_for_point() {
-  local highest
-  highest="$(echo_lines_without_symlinks "$1"* | sort_semver | tail -1)"
-  echo "$highest"
+  echo_lines_without_symlinks $1* | sort_versions "$1" | tail -1
 }
 
 auto_symlink_point() {
