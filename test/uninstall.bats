@@ -14,7 +14,7 @@ load test_helper
   refute [ -L "$NODENV_ROOT/versions/0.10" ]
 }
 
-@test "running nodenv-uninstall auto updates the alias to highest remaining version" {
+@test "running nodenv-uninstall auto updates the alias to highest remaining semver version" {
   create_versions 0.10.2 0.10.4
   create_alias 0.10 0.10.4
 
