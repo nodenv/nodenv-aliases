@@ -141,9 +141,6 @@ case "$#" in
           auto_symlink_point "$point"
         done
         ;;
-      --help)
-        exec nodenv-help alias
-        ;;
       -*)
         abort < <(nodenv-help --usage alias)
         ;;
