@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jasonkarns/nodenv-aliases.svg?branch=master)](https://travis-ci.org/jasonkarns/nodenv-aliases)
+[![Build Status](https://travis-ci.org/nodenv/nodenv-aliases.svg?branch=master)](https://travis-ci.org/nodenv/nodenv-aliases)
 
 # Aliases for nodenv Node versions
 
@@ -15,7 +15,7 @@ up to date aliases for point releases.
 
 ## Installation
 
-    git clone https://github.com/jasonkarns/nodenv-aliases.git $(nodenv root)/plugins/nodenv-aliases
+    git clone https://github.com/nodenv/nodenv-aliases.git $(nodenv root)/plugins/nodenv-aliases
 
 ## Usage
 
