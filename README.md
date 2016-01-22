@@ -43,7 +43,7 @@ or
 
 Forked from [rbenv-aliases][] originally by [tpope][] and modified to work for nodenv.
 
-[nodenv]: https://github.com/OiNutter/nodenv
-[node-build]: https://github.com/OiNutter/node-build
+[nodenv]: https://github.com/nodenv/nodenv
+[node-build]: https://github.com/nodenv/node-build
 [rbenv-aliases]: https://github.com/tpope/rbenv-aliases
 [tpope]: https://github.com/tpope
