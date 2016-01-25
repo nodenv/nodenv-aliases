@@ -3,7 +3,10 @@
   "version": "1.0.3",
   "private": true,
   "description": "Create aliases for nodenv Node versions",
-  "author": "Jason Karns <jason@karns.name> (http://jason.karns.name/)",
+  "author": "Tim Pope (https://tpo.pe)",
+  "contributors": [
+    "Jason Karns <jason@karns.name> (http://jason.karns.name)"
+  ],
   "homepage": "https://github.com/nodenv/nodenv-aliases#readme",
   "directories": {
     "test": "test"
