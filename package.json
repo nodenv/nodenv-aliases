@@ -3,14 +3,19 @@
   "version": "1.0.3",
   "private": true,
   "description": "Create aliases for nodenv Node versions",
-  "author": "Jason Karns <jason@karns.name> (http://jason.karns.name/)",
+  "author": "Tim Pope (https://tpo.pe)",
+  "contributors": [
+    "Jason Karns <jason@karns.name> (http://jason.karns.name)"
+  ],
   "homepage": "https://github.com/nodenv/nodenv-aliases#readme",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "pretest": "test/setup_nodenv",
-    "test": "bats test"
+    "test": "bats ${CI:+--tap} test",
+    "publish:brew": "brew-publish $npm_package_name v$npm_package_version",
+    "postversion": "git push origin master v$npm_package_version && npm run publish:brew"
   },
   "repository": {
     "type": "git",
@@ -21,7 +26,8 @@
   },
   "devDependencies": {
     "bats": "^0.4.2",
-    "bats-assert": "^1.0.1"
+    "bats-assert": "^1.0.1",
+    "brew-publish": "git+https://github.com/jasonkarns/brew-publish.git#nodenv-tap"
   },
   "keywords": [
     "node",
