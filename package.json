@@ -13,7 +13,7 @@
   },
   "scripts": {
     "pretest": "test/setup_nodenv",
-    "test": "bats test"
+    "test": "bats ${CI:+--tap} test"
   },
   "repository": {
     "type": "git",
