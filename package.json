@@ -3,12 +3,21 @@
   "version": "1.1.0",
   "private": true,
   "description": "Create aliases for nodenv Node versions",
+  "homepage": "https://github.com/nodenv/nodenv-aliases#readme",
+  "license": "MIT",
   "author": "Tim Pope (https://tpo.pe)",
   "contributors": [
     "Jason Karns <jason@karns.name> (http://jason.karns.name)"
   ],
-  "homepage": "https://github.com/nodenv/nodenv-aliases#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodenv/nodenv-aliases.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nodenv/nodenv-aliases/issues"
+  },
   "directories": {
+    "bin": "bin",
     "test": "test"
   },
   "scripts": {
@@ -16,13 +25,6 @@
     "test": "bats ${CI:+--tap} test",
     "publish:brew": "brew-publish $npm_package_name v$npm_package_version",
     "postversion": "git push origin master v$npm_package_version && npm run publish:brew"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nodenv/nodenv-aliases.git"
-  },
-  "bugs": {
-    "url": "https://github.com/nodenv/nodenv-aliases/issues"
   },
   "devDependencies": {
     "bats": "^0.4.2",
@@ -34,6 +36,5 @@
     "nodenv",
     "alias",
     "version"
-  ],
-  "license": "MIT"
+  ]
 }
