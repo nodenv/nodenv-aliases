@@ -41,9 +41,10 @@ or
 
 ## Credits
 
-Forked from [rbenv-aliases][] originally by [tpope][] and modified to work for nodenv.
+Forked from [Tim Pope][tpope]'s [rbenv-aliases][] by [Jason Karns][jasonkarns] and modified for nodenv.
 
 [nodenv]: https://github.com/nodenv/nodenv
 [node-build]: https://github.com/nodenv/node-build
 [rbenv-aliases]: https://github.com/tpope/rbenv-aliases
 [tpope]: https://github.com/tpope
+[jasonkarns]: https://github.com/jasonkarns
