@@ -30,11 +30,5 @@
     "bats": "^0.4.2",
     "bats-assert": "^1.0.1",
     "brew-publish": "git+https://github.com/jasonkarns/brew-publish.git#nodenv-tap"
-  },
-  "keywords": [
-    "node",
-    "nodenv",
-    "alias",
-    "version"
-  ]
+  }
 }
