@@ -10,3 +10,12 @@ load test_helper
   assert_success
   unstub nodenv-alias
 }
+
+@test "uninstall hook works with iojs" {
+  stub nodenv-alias 'iojs-1.10 --auto : true'
+
+  run nodenv-uninstall iojs-1.10.36
+
+  assert_success
+  unstub nodenv-alias
+}
