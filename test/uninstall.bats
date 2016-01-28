@@ -19,3 +19,20 @@ load test_helper
   assert_success
   unstub nodenv-alias
 }
+
+@test "uninstall hook exits cleanly regardless of nodenv-alias" {
+  stub nodenv-alias false
+
+  run nodenv-uninstall 0.10.36
+
+  assert_success
+}
+
+@test "nodenv-alias STDERR is muted" {
+  stub nodenv-alias 'echo FAILURE >&2'
+
+  run nodenv-uninstall 0.10.36
+
+  assert_success
+  refute_output_contains FAILURE
+}
