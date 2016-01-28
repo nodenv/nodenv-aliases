@@ -19,9 +19,6 @@ source "${BATS_TEST_DIRNAME}/../etc/nodenv.d/install"/*.bash
 STATUS=0
 VERSION_NAME=${1:?}
 
-d="$NODENV_ROOT/versions/$1"
-mkdir -p "$d"
-echo "$1" > "$d/RELEASE.txt"
 echo "Fake-Installed version $1"
 
 echo Executing after_install hooks.

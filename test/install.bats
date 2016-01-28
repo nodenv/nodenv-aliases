@@ -2,42 +2,20 @@
 
 load test_helper
 
-@test "running nodenv-install auto installs an alias" {
+@test "install hook runs auto-alias on newly installed version" {
+  stub nodenv 'alias 0.10 --auto : true'
 
   run nodenv-install 0.10.36
-  assert_success
-  assert_line 'Installed fake version 0.10.36'
-  assert_line '0.10 => 0.10.36'
-  assert_alias_version 0.10 0.10.36
 
-  run nodenv-install 0.10.22
   assert_success
-  assert_line 'Installed fake version 0.10.22'
-  assert_alias_version 0.10 0.10.36
-
-  run nodenv-install 0.10.38
-  assert_success
-  assert_line 'Installed fake version 0.10.38'
-  assert_line '0.10 => 0.10.38'
-  assert_alias_version 0.10 0.10.38
+  unstub nodenv
 }
 
-@test "running nodenv-install auto installs an alias for iojs" {
+@test "install hook works with iojs" {
+  stub nodenv 'alias iojs-1.10 --auto : true'
 
   run nodenv-install iojs-1.10.36
-  assert_success
-  assert_line 'Installed fake version iojs-1.10.36'
-  assert_line 'iojs-1.10 => iojs-1.10.36'
-  assert_alias_version iojs-1.10 iojs-1.10.36
 
-  run nodenv-install iojs-1.10.22
   assert_success
-  assert_line 'Installed fake version iojs-1.10.22'
-  assert_alias_version iojs-1.10 iojs-1.10.36
-
-  run nodenv-install iojs-1.10.38
-  assert_success
-  assert_line 'Installed fake version iojs-1.10.38'
-  assert_line 'iojs-1.10 => iojs-1.10.38'
-  assert_alias_version iojs-1.10 iojs-1.10.38
+  unstub nodenv
 }

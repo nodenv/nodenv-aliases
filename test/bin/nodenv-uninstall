@@ -17,7 +17,6 @@ echo Sourcing uninstall hooks
 source "${BATS_TEST_DIRNAME}/../etc/nodenv.d/uninstall"/*.bash
 
 VERSION_NAME=${1:?}
-rm -rf "$NODENV_ROOT/versions/$VERSION_NAME"
 echo "Fake-Uninstalled version $VERSION_NAME"
 
 echo Executing after_uninstall hooks
