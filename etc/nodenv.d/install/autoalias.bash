@@ -1,5 +1,3 @@
-after_install autoalias
-
 autoalias() {
   if [ "$STATUS" = 0 ]; then
     case "$VERSION_NAME" in
@@ -9,3 +7,5 @@ autoalias() {
     esac
   fi
 }
+
+after_install autoalias

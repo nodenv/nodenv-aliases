@@ -1,5 +1,3 @@
-after_uninstall autoalias
-
 autoalias() {
   case "$VERSION_NAME" in
   *.*.*)
@@ -7,3 +5,5 @@ autoalias() {
     ;;
   esac
 }
+
+after_uninstall autoalias
