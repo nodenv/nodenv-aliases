@@ -10,6 +10,7 @@ if [ "$NODENV_ROOT" != "${NODENV_TEST_DIR}/root" ]; then
   export NODENV_ROOT="${NODENV_TEST_DIR}/root"
   export HOME="${NODENV_TEST_DIR}/home"
 
+  export BATS_TEST_DIRNAME
   export INSTALL_HOOK="${BATS_TEST_DIRNAME}/../etc/nodenv.d/install/autoalias.bash"
   export UNINSTALL_HOOK="${BATS_TEST_DIRNAME}/../etc/nodenv.d/uninstall/autoalias.bash"
 
