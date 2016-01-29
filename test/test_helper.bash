@@ -5,22 +5,20 @@ unset NODENV_VERSION
 unset NODENV_DIR
 
 export NODENV_HOOK_PATH="${BATS_TEST_DIRNAME}/../etc/nodenv.d"
-NODENV_TEST_DIR="${BATS_TMPDIR}/nodenv"
 
 # guard against executing this block twice due to bats internals
-if [ "$NODENV_ROOT" != "${NODENV_TEST_DIR}/root" ]; then
-  export NODENV_ROOT="${NODENV_TEST_DIR}/root"
+if [ "$NODENV_ROOT" != "${BATS_TMPDIR}/nodenv" ]; then
+  export NODENV_ROOT="${BATS_TMPDIR}/nodenv"
 
   PATH=/usr/bin:/bin:/usr/sbin:/sbin
   PATH="${BATS_TEST_DIRNAME}/bin:$PATH"
   PATH="${BATS_TEST_DIRNAME}/../bin:$PATH"
   PATH="${BATS_TEST_DIRNAME}/../nodenv/libexec:$PATH"
-  PATH="${BATS_TEST_DIRNAME}/../nodenv/test/libexec:$PATH"
   export PATH
 fi
 
 teardown() {
-  rm -rf "$NODENV_TEST_DIR"
+  rm -rf "$NODENV_ROOT"
 }
 
 # Creates fake version directories
