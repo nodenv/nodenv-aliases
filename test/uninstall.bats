@@ -2,27 +2,39 @@
 
 load test_helper
 
-@test "running nodenv-uninstall auto removes the alias" {
-  create_versions 0.10.36
-  create_alias 0.10 0.10.36
+@test "uninstall hook runs auto-alias on removed version" {
+  stub nodenv-alias '0.10 --auto : true'
 
   run nodenv-uninstall 0.10.36
 
   assert_success
-  assert_line 'Uninstalled fake version 0.10.36'
-  assert_line_starts_with 'Removing invalid link from 0.10'
-  refute [ -L "$NODENV_ROOT/versions/0.10" ]
+  unstub nodenv-alias
 }
 
-@test "running nodenv-uninstall auto updates the alias to highest remaining semver version" {
-  create_versions 0.10.2 0.10.4
-  create_alias 0.10 0.10.4
+@test "uninstall hook works with iojs" {
+  stub nodenv-alias 'iojs-1.10 --auto : true'
 
-  run nodenv-uninstall 0.10.4
+  run nodenv-uninstall iojs-1.10.36
 
   assert_success
-  assert_line 'Uninstalled fake version 0.10.4'
-  assert_line_starts_with 'Removing invalid link from 0.10'
-  assert_line '0.10 => 0.10.2'
-  assert_alias_version 0.10 0.10.2
+  unstub nodenv-alias
+}
+
+@test "uninstall hook exits cleanly regardless of nodenv-alias" {
+  stub nodenv-alias false
+
+  run nodenv-uninstall 0.10.36
+
+  assert_success
+  unstub nodenv-alias
+}
+
+@test "nodenv-alias STDERR is muted" {
+  stub nodenv-alias 'echo FAILURE >&2'
+
+  run nodenv-uninstall 0.10.36
+
+  assert_success
+  refute_output_contains FAILURE
+  unstub nodenv-alias
 }
