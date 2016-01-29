@@ -26,6 +26,7 @@ load test_helper
   run nodenv-install 0.10.36
 
   assert_success
+  unstub nodenv-alias
 }
 
 @test "nodenv-alias STDERR is muted" {
@@ -35,4 +36,5 @@ load test_helper
 
   assert_success
   refute_output_contains FAILURE
+  unstub nodenv-alias
 }
