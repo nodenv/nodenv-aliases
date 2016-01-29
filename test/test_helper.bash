@@ -4,6 +4,7 @@ load ../node_modules/bats-mock/stub
 unset NODENV_VERSION
 unset NODENV_DIR
 
+export NODENV_HOOK_PATH="${BATS_TEST_DIRNAME}/../etc/nodenv.d"
 NODENV_TEST_DIR="${BATS_TMPDIR}/nodenv"
 
 # guard against executing this block twice due to bats internals
@@ -11,9 +12,6 @@ if [ "$NODENV_ROOT" != "${NODENV_TEST_DIR}/root" ]; then
   export NODENV_ROOT="${NODENV_TEST_DIR}/root"
   export HOME="${NODENV_TEST_DIR}/home"
 
-  export BATS_TEST_DIRNAME
-  export INSTALL_HOOK="${BATS_TEST_DIRNAME}/../etc/nodenv.d/install/autoalias.bash"
-  export UNINSTALL_HOOK="${BATS_TEST_DIRNAME}/../etc/nodenv.d/uninstall/autoalias.bash"
 
   PATH=/usr/bin:/bin:/usr/sbin:/sbin
   PATH="${NODENV_TEST_DIR}/bin:$PATH"
