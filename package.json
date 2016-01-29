@@ -21,7 +21,6 @@
     "test": "test"
   },
   "scripts": {
-    "pretest": "test/setup_nodenv",
     "test": "bats ${CI:+--tap} test",
     "publish:brew": "brew-publish $npm_package_name v$npm_package_version",
     "postversion": "git push origin master v$npm_package_version && npm run publish:brew"
