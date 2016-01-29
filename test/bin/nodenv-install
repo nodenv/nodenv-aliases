@@ -14,7 +14,7 @@ after_install() {
 }
 
 echo Sourcing install hooks
-source "${BATS_TEST_DIRNAME}/../etc/nodenv.d/install"/*.bash
+source "$NODENV_HOOK_PATH"/install/*.bash
 
 STATUS=0
 VERSION_NAME=${1:?}

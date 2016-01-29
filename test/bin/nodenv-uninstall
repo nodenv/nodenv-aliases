@@ -14,7 +14,7 @@ after_uninstall() {
 }
 
 echo Sourcing uninstall hooks
-source "${BATS_TEST_DIRNAME}/../etc/nodenv.d/uninstall"/*.bash
+source "$NODENV_HOOK_PATH"/uninstall/*.bash
 
 VERSION_NAME=${1:?}
 echo "Fake-Uninstalled version $VERSION_NAME"
