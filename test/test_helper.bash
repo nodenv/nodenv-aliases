@@ -13,7 +13,6 @@ if [ "$NODENV_ROOT" != "${BATS_TMPDIR}/nodenv" ]; then
   PATH=/usr/bin:/bin:/usr/sbin:/sbin
   PATH="${BATS_TEST_DIRNAME}/bin:$PATH"
   PATH="${BATS_TEST_DIRNAME}/../bin:$PATH"
-  PATH="${BATS_TEST_DIRNAME}/../nodenv/libexec:$PATH"
   export PATH
 fi
 
