@@ -10,9 +10,6 @@ case "$1" in
     nodenv-alias --list | awk '{print $1}'
     exit 0
     ;;
-  --help)
-    exec nodenv-help unalias
-    ;;
   "")
     nodenv-help --usage unalias >&2
     exit 1
