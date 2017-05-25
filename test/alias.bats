@@ -10,6 +10,14 @@ load test_helper
   assert_alias_version 0.8 0.8.10
 }
 
+@test "nodenv-alias 4 --auto" {
+  create_versions 4.4.4  4.7.0  4.0.7
+
+  run nodenv-alias 4 --auto
+  assert_success
+  assert_alias_version 4 4.7.0
+}
+
 @test "nodenv-alias iojs-1.2 --auto" {
   create_versions iojs-1.2.0  iojs-1.2.5  iojs-1.2.10
 
