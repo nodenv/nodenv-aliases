@@ -48,7 +48,7 @@ echo_lines_with_symlinks() {
 echo_lines_without_symlinks() {
   local file
   for file in "$@"; do
-    [ ! -L "$file" ] && echo "$file"
+    [ ! -L "$file" ] && echo "${file#\./}"
   done
 }
 
@@ -79,7 +79,7 @@ auto_symlink_point() {
 }
 
 point_releases() {
-  echo_lines_without_symlinks *.*.* | sed -e 's/\.[^-.]*$//' -e 's/-[^.]*$//' | sort -u
+  echo_lines_without_symlinks ./*.*.* | sed -e 's/\.[^-.]*$//' -e 's/-[^.]*$//' | sort -u
 }
 
 abort() {
