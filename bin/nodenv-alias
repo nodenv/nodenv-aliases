@@ -20,12 +20,10 @@ resolve_link() {
 
 list() {
   local exit=1
-  local dir
-  for dir in $(echo_lines ./*); do
-    if [ -L "$dir" ]; then
-      echo "${dir#\./} => $(resolve_link "$dir")"
-      exit=0
-    fi
+  local link
+  for link in $(echo_lines_with_symlinks ./*); do
+    echo "$link => $(resolve_link "$link")"
+    exit=0
   done
   return $exit
 }
@@ -40,10 +38,10 @@ cleanup_invalid() {
   done
 }
 
-echo_lines() {
-  local line
-  for line in "$@"; do
-    echo "$line"
+echo_lines_with_symlinks() {
+  local file
+  for file in "$@"; do
+    [ -L "$file" ] && echo "${file#\./}"
   done
 }
 
