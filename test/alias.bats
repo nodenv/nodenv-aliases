@@ -38,6 +38,7 @@ load test_helper
   create_versions 0.8.0        0.8.5        0.8.10
   create_versions iojs-1.10.1  iojs-1.10.7  iojs-1.10.23
   create_versions 4.0.0        4.4.2        4.4.11
+  create_versions 8.0.0        8.0.0-rc.0   8.0.0-rc.1   8.0.0-rc.2
 
   run nodenv-alias --auto
 
@@ -45,6 +46,9 @@ load test_helper
   assert_alias_version 0.8 0.8.10
   assert_alias_version 4.4 4.4.11
   assert_alias_version 4 4.4.11
+  assert_alias_version 8 8.0.0
+  assert_alias_version 8.0 8.0.0
+  assert_alias_version 8.0.0-rc 8.0.0-rc.2
   assert_alias_version iojs-1.10 iojs-1.10.23
   refute [ -L "$NODENV_ROOT/versions/0" ]
 }
