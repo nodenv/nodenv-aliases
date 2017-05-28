@@ -23,7 +23,7 @@ list() {
   local dir
   for dir in $(echo_lines ./*); do
     if [ -L "$dir" ]; then
-      echo "$dir => $(resolve_link "$dir")"
+      echo "${dir#\./} => $(resolve_link "$dir")"
       exit=0
     fi
   done
