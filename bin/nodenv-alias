@@ -100,7 +100,7 @@ if [ --complete = "$1" ]; then
   elif [ "$#" = 0 ]; then
     echo --auto
     echo --list
-    { point_releases; nodenv-versions --bare; } | sort -u
+    { point_releases; echo_lines_with_symlinks ./*; } | sort -u
   fi
   exit 0
 fi
