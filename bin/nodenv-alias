@@ -107,6 +107,14 @@ point_releases() {
   echo_lines_without_symlinks ./*.*.* | sed -e 's/\.[^-.]*$//' -e 's/-[^.]*$//' | sort -u
 }
 
+minor_releases() {
+  echo_lines_without_symlinks ./*.*.* | sed -E -e 's/([0-9]+\.[0-9]+)\.[0-9]+.*/\1/' | sort -u
+}
+
+major_releases() {
+  echo_lines_without_symlinks ./*.*.* | sed -E -e 's/([0-9]+)\.[0-9]+\.[0-9]+.*/\1/' | sort -u | grep -v 0
+}
+
 abort() {
   { if [ "$#" -eq 0 ]; then cat -
     else echo "nodenv-alias: $*"
@@ -160,7 +168,7 @@ case "$#" in
         ;;
       --auto | --all)
         cleanup_invalid
-        for point in $(point_releases); do
+        for point in $(minor_releases; major_releases); do
           auto_symlink_point "$point"
         done
         ;;
