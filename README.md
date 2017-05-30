@@ -4,14 +4,17 @@
 
 Invoke `nodenv alias <name> <version>` to make a symbolic link from `<name>` to
 `<version>` in the [nodenv][] versions directory, effectively creating an
-alias.  The cool part is that if you pass in a point release as the name, you
-can give `--auto` to link to the latest installed patch level.  For example,
-`nodenv alias 0.10 --auto` will automatically create an alias from `0.10` to
-`0.10.36` (or whatever the most recent version you have installed is).
+alias.  The cool part is that if you pass in a major or major.minor release as the name, you
+can give `--auto` to link to the latest installed minor or patch level (respectively).  For example,
+`nodenv alias 4.4 --auto` will automatically create an alias from `4.4` to
+`4.4.7` (or to whatever is the most recent version you have installed). Similarly,
+`nodenv alias 6 --auto` will automatically create an alias from `6` to
+`6.10.3` (or to whatever is the most recent version you have installed).
 
 Plus, if you're using [node-build][], `nodenv install major.minor.patch`
-automatically invokes `nodenv alias major.minor --auto`, so you'll always have
-up to date aliases for point releases.
+automatically invokes `nodenv alias major --auto` and
+`nodenv alias major.minor --auto`, so you'll always have
+up to date aliases.
 
 ## Installation
 
@@ -19,17 +22,25 @@ up to date aliases for point releases.
 
 ## Usage
 
-Create a `major.minor` alias for each installed minor release:
+Create a `major` and `major.minor` alias for each installed major and minor release:
 
     nodenv alias --auto
+
+Create a `major` alias for the highest major release of, say 6:
+
+    nodenv alias 6 --auto
 
 Create a `major.minor` alias for the highest minor release of, say 0.8:
 
     nodenv alias 0.8 --auto
 
+Create a `major.minor.patch-pre` alias for the highest prerelease of, say 8:
+
+    nodenv alias 8.0.0-rc --auto
+
 Create a named alias for a specific release:
 
-    nodenv alias my-favorite-node 0.10.36
+    nodenv alias boron 6
 
 Remove an alias:
 
