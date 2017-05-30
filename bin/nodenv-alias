@@ -110,7 +110,7 @@ minor_releases() {
 }
 
 major_releases() {
-  echo_lines_without_symlinks ./*.*.* | sed -E -e 's/([0-9]+)\.[0-9]+\.[0-9]+.*/\1/' | sort -u | grep -v 0
+  echo_lines_without_symlinks ./*.*.* | sed -E -e 's/([0-9]+)\.[0-9]+\.[0-9]+.*/\1/' | sort -u | grep -xv 0
 }
 
 recommended_aliases() {
