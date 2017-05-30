@@ -4,7 +4,7 @@ recommended_aliases() {
     echo "${name%%.*}" # major
     echo "${name%.*.*}" # major.minor for pre-releases
     echo "${name%.*}" # major.minor for non-pre-releases
-  } | sort -u | grep -v 0
+  } | sort -u | grep -xv 0
 }
 
 autoalias() {
