@@ -1,3 +1,5 @@
+# shellcheck shell=bash
+
 recommended_aliases() {
   local name="$1"
   {
