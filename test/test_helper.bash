@@ -1,3 +1,5 @@
+# shellcheck shell=bash
+
 load ../node_modules/bats-assert/all
 load ../node_modules/bats-mock/stub
 
@@ -26,7 +28,7 @@ create_versions() {
     #echo "Created version: $d"
     d="$NODENV_ROOT/versions/$v"
     mkdir -p "$d/bin"
-    echo $v > "$d/RELEASE.txt"
+    echo "$v" > "$d/RELEASE.txt"
     ln -nfs /bin/echo "$d/bin/node"
   done
 }
