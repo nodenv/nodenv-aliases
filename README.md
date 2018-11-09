@@ -1,6 +1,8 @@
+# nodenv-aliases
+
 [![Build Status](https://travis-ci.org/nodenv/nodenv-aliases.svg?branch=master)](https://travis-ci.org/nodenv/nodenv-aliases)
 
-# Aliases for nodenv Node versions
+Aliases for nodenv Node versions
 
 Invoke `nodenv alias <name> <version>` to make a symbolic link from `<name>` to
 `<version>` in the [nodenv][] versions directory, effectively creating an
