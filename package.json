@@ -1,13 +1,12 @@
 {
-  "name": "nodenv-aliases",
+  "name": "@nodenv/nodenv-aliases",
   "version": "2.0.1",
-  "private": true,
   "description": "Create aliases for nodenv Node versions",
   "homepage": "https://github.com/nodenv/nodenv-aliases#readme",
   "license": "MIT",
-  "author": "Tim Pope (https://tpo.pe)",
   "contributors": [
-    "Jason Karns <jason@karns.name> (http://jason.karns.name)"
+    "Jason Karns <jason@karns.name> (http://jason.karns.name)",
+    "Tim Pope (https://tpo.pe)"
   ],
   "repository": {
     "type": "git",
