@@ -20,11 +20,14 @@
     "test": "test"
   },
   "scripts": {
+    "start": "bin/nodenv-alias",
     "test": "bats ${CI:+--tap} test",
     "posttest": "npm run lint",
-    "lint": "shellcheck $(git ls-files | grep -E -e '^bin/' -e '\\.sh$' -e '\\.bash$' | grep -v '^node_modules')",
-    "publish:brew": "brew-publish $npm_package_name v$npm_package_version",
-    "postversion": "git push --follow-tags && npm run publish:brew"
+    "lint": "git ls-files bin etc test/*.*sh | xargs shellcheck",
+    "postversion": "npm publish",
+    "prepublishOnly": "npm run publish:github && npm run publish:brew",
+    "publish:brew": "brew-publish",
+    "publish:github": "git push --follow-tags"
   },
   "dependencies": {
     "sh-semver": "git+https://github.com/jasonkarns/sh-semver.git#sort-versions-stdin"
