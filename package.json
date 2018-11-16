@@ -19,6 +19,10 @@
     "bin": "bin",
     "test": "test"
   },
+  "files": [
+    "bin",
+    "etc"
+  ],
   "scripts": {
     "start": "bin/nodenv-alias",
     "test": "bats ${CI:+--tap} test",
