@@ -12,7 +12,8 @@
 
 shopt -s nullglob
 
-cd "$NODENV_ROOT/versions" || exit 1
+versions_dir="${NODENV_ROOT}/versions"
+cd "$versions_dir" || exit 1
 
 resolve_link() {
   $(type -p greadlink readlink | head -1) "$1"
@@ -90,14 +91,25 @@ auto_for_point() {
   echo_lines_without_symlinks "$1"* | sort_versions "$1" | tail -1
 }
 
+create_symlink() {
+  local symlink_dir
+  symlink_dir=$(dirname "$1")
+
+  if [ -n "$symlink_dir" ]; then
+    mkdir -p "$symlink_dir"
+  fi
+
+  ln -nsf "$versions_dir/$2" "$1"
+}
+
 auto_symlink_point() {
   local auto
   auto="$(auto_for_point "$1")"
   if [ -z "$auto" ]; then
     echo "Couldn't find any versions for $1" >&2
   else
-    ln -nsf "$auto" "$1"
     echo "$1 => $auto"
+    create_symlink "$1" "$auto"
   fi
 }
 
@@ -161,7 +173,7 @@ case "$#" in
       esac
     else
       echo "$1 => $2"
-      ln -nsf "$2" "$1"
+      create_symlink "$1" "$2"
     fi
     ;;
 
