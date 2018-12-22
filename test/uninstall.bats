@@ -57,6 +57,6 @@ load test_helper
   run nodenv-uninstall 0.10.36
 
   assert_success
-  refute_output_contains FAILURE
+  refute_output --partial FAILURE
   unstub nodenv-alias
 }

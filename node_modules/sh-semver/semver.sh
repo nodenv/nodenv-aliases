@@ -490,7 +490,11 @@ apply_rules()
 
 
 FORCE_ALLOW_PREREL=false
-USAGE="Usage:    $0 -r <rule> <version> [<version>... ]"
+USAGE="Usage:    $0 [-r <rule>] [<version>... ]
+
+Omitting <version>s reads them from STDIN.
+Omitting -r <rule> simply sorts the versions according to semver ordering."
+
 while getopts ar:h o; do
     case "$o" in
         a) FORCE_ALLOW_PREREL=true ;;
