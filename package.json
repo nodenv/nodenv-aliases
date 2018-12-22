@@ -34,7 +34,7 @@
     "publish:github": "git push --follow-tags"
   },
   "dependencies": {
-    "sh-semver": "git+https://github.com/jasonkarns/sh-semver.git#sort-versions-stdin"
+    "sh-semver": "git+https://github.com/qzb/sh-semver.git"
   },
   "devDependencies": {
     "@nodenv/nodenv": "^1.1.2",
