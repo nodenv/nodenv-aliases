@@ -20,6 +20,12 @@ up to date aliases.
 
 <!-- toc -->
 
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+
+<!-- tocstop -->
+
 ## Installation
 
     git clone https://github.com/nodenv/nodenv-aliases.git $(nodenv root)/plugins/nodenv-aliases
