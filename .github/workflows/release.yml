@@ -7,6 +7,12 @@ jobs:
     steps:
       - uses: jasonkarns/create-release@master
 
+  homebrew:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: nodenv/homebrew-nodenv/.github/actions/bump-formula@action
+        with: { token: ${{ secrets.REPO_TOKEN }} }
+
   npm:
     runs-on: ubuntu-latest
     steps:
@@ -16,5 +22,4 @@ jobs:
           scope: nodenv
           registry-url: https://registry.npmjs.org
       - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_TOKEN }}
+        env: { NODE_AUTH_TOKEN: ${{ secrets.NPMJS_TOKEN }} }
