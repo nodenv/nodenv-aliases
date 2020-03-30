@@ -1,0 +1,29 @@
+name: Release
+on:
+  push:
+    tags: 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  github:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: jasonkarns/create-release@master
+
+  homebrew:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: nodenv/homebrew-nodenv/.github/actions/bump-formula@action
+        with:
+          token: ${{ secrets.REPO_TOKEN }}
+
+  npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          scope: nodenv
+          registry-url: https://registry.npmjs.org
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_TOKEN }}
