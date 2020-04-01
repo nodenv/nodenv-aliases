@@ -1,7 +1,5 @@
 name: Release
-on:
-  push:
-    tags: 'v[0-9]+.[0-9]+.[0-9]+'
+on: { push: { tags: 'v[0-9]+.[0-9]+.[0-9]+' } }
 
 jobs:
   github:
@@ -12,9 +10,12 @@ jobs:
   homebrew:
     runs-on: ubuntu-latest
     steps:
-      - uses: nodenv/homebrew-nodenv/.github/actions/bump-formula@action
+      - uses: mislav/bump-homebrew-formula-action@v1
         with:
-          token: ${{ secrets.REPO_TOKEN }}
+          formula-name: nodenv-aliases
+          homebrew-tap: nodenv/nodenv
+        env:
+          COMMITTER_TOKEN: ${{ secrets.REPO_TOKEN }}
 
   npm:
     runs-on: ubuntu-latest
