@@ -1,6 +1,8 @@
 # nodenv-aliases
 
-[![Build Status](https://travis-ci.org/nodenv/nodenv-aliases.svg?branch=master)](https://travis-ci.org/nodenv/nodenv-aliases)
+[![Latest GitHub Release](https://img.shields.io/github/v/release/nodenv/nodenv-aliases?logo=github&sort=semver)](https://github.com/nodenv/nodenv-aliases/releases/latest)
+[![Latest npm Release](https://img.shields.io/npm/v/@nodenv/nodenv-aliases)](https://www.npmjs.com/package/@nodenv/nodenv-aliases/v/latest)
+[![Test](https://img.shields.io/github/workflow/status/nodenv/nodenv-aliases/Test?label=tests&logo=github)](https://github.com/nodenv/nodenv-aliases/actions?query=workflow%3ATest)
 
 Aliases for nodenv Node versions
 
