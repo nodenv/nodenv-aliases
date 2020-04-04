@@ -39,6 +39,6 @@
     "bats-assert": "jasonkarns/bats-assert-1",
     "bats-mock": "^1.0.1",
     "bats-support": "jasonkarns/bats-support",
-    "shellcheck": "^0.4.1"
+    "shellcheck": "^0.4.2"
   }
 }
