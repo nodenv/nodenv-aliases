@@ -34,7 +34,7 @@
     "sh-semver": "git+https://github.com/qzb/sh-semver.git"
   },
   "devDependencies": {
-    "@nodenv/nodenv": "^1.4.0",
+    "@nodenv/nodenv": "^1.4.1",
     "bats": "^1.6.0",
     "bats-assert": "jasonkarns/bats-assert-1",
     "bats-mock": "^1.0.1",
