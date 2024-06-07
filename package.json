@@ -37,7 +37,7 @@
     "@nodenv/nodenv": "^1.5.0",
     "bats": "^1.11.0",
     "bats-assert": "jasonkarns/bats-assert-1",
-    "bats-mock": "^1.1.0",
+    "bats-mock": "^1.2.5",
     "bats-support": "jasonkarns/bats-support",
     "shellcheck": "^2.2.0"
   }
