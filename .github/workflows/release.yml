@@ -5,12 +5,22 @@ jobs:
   github:
     runs-on: ubuntu-latest
     steps:
-      - uses: jasonkarns/create-release@master
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
+        with:
+          egress-policy: audit
+
+      - uses: jasonkarns/create-release@9249b73e127bea00eb6f2caa7244657983df0557 # master
 
   homebrew:
     runs-on: ubuntu-latest
     steps:
-      - uses: mislav/bump-homebrew-formula-action@v1
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
+        with:
+          egress-policy: audit
+
+      - uses: mislav/bump-homebrew-formula-action@21991dc8f899341b552c9842957677139a340980 # v1.16
         with:
           formula-name: nodenv-aliases
           homebrew-tap: nodenv/nodenv
@@ -20,8 +30,13 @@ jobs:
   npm:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
+      - uses: actions/setup-node@f1f314fca9dfce2769ece7d933488f076716723e # v1.4.6
         with:
           scope: nodenv
           registry-url: https://registry.npmjs.org
