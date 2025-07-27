@@ -8,8 +8,8 @@ Aliases for nodenv Node versions
 
 Invoke `nodenv alias <name> <version>` to make a symbolic link from `<name>` to
 `<version>` in the [nodenv][] versions directory, effectively creating an
-alias.  The cool part is that if you pass in a major or major.minor release as the name, you
-can give `--auto` to link to the latest installed minor or patch level (respectively).  For example,
+alias. The cool part is that if you pass in a major or major.minor release as the name, you
+can give `--auto` to link to the latest installed minor or patch level (respectively). For example,
 `nodenv alias 4.4 --auto` will automatically create an alias from `4.4` to
 `4.4.7` (or to whatever is the most recent version you have installed). Similarly,
 `nodenv alias 6 --auto` will automatically create an alias from `6` to
