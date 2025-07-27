@@ -5,7 +5,7 @@
   "homepage": "https://github.com/nodenv/nodenv-aliases#readme",
   "license": "MIT",
   "contributors": [
-    "Jason Karns <jason@karns.name> (http://jason.karns.name)",
+    "Jason Karns <jason.karns@gmail.com> (http://jasonkarns.com)",
     "Tim Pope (https://tpo.pe)"
   ],
   "repository": {
@@ -27,7 +27,7 @@
     "start": "bin/nodenv-alias",
     "test": "bats ${CI:+--tap} test",
     "posttest": "npm run lint",
-    "lint": "git ls-files bin etc test/*.*sh | xargs shellcheck",
+    "lint": "git ls-files bin etc script */*.*sh | xargs shellcheck",
     "postversion": "git push --follow-tags"
   },
   "dependencies": {
