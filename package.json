@@ -1,6 +1,6 @@
 {
   "name": "@nodenv/nodenv-aliases",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "Create aliases for nodenv Node versions",
   "homepage": "https://github.com/nodenv/nodenv-aliases#readme",
   "license": "MIT",
