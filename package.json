@@ -28,8 +28,6 @@
     "test": "bats ${CI:+--tap} test",
     "posttest": "npm run lint",
     "lint": "git ls-files bin etc script */*.*sh | xargs shellcheck",
-    "lint:fix": "prettier --write .",
-    "postlint": "prettier --check .",
     "postversion": "git push --follow-tags"
   },
   "dependencies": {
@@ -41,7 +39,6 @@
     "bats-assert": "^2.0.0",
     "bats-mock": "^1.2.5",
     "bats-support": "^0.3.0",
-    "prettier": "^3.6.2",
     "shellcheck": "^3.0.0"
   }
 }
