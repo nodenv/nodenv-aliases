@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/nodenv/nodenv-aliases.git"
+    "url": "git+https://github.com/nodenv/nodenv-aliases.git"
   },
   "bugs": {
     "url": "https://github.com/nodenv/nodenv-aliases/issues"
@@ -28,8 +28,6 @@
     "test": "bats ${CI:+--tap} test",
     "posttest": "npm run lint",
     "lint": "git ls-files bin etc script */*.*sh | xargs shellcheck",
-    "lint:fix": "prettier --write .",
-    "postlint": "prettier --check .",
     "postversion": "git push --follow-tags"
   },
   "dependencies": {
@@ -40,7 +38,7 @@
     "bats": "^1.12.0",
     "bats-assert": "^2.2.0",
     "bats-mock": "^1.2.5",
-    "prettier": "^3.6.2",
+    "bats-support": "^0.3.0",
     "shellcheck": "^4.1.0"
   }
 }
