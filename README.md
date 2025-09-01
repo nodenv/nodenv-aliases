@@ -1,6 +1,6 @@
 # nodenv-aliases
 
-Aliases for nodenv Node versions
+A [nodenv][] plugin to create and manage aliases for Node versions.
 
 [![Tests](https://img.shields.io/github/actions/workflow/status/nodenv/nodenv-aliases/test.yml?label=tests&logo=github)](https://github.com/nodenv/nodenv-aliases/actions/workflows/test.yml)
 [![Latest GitHub Release](https://img.shields.io/github/v/release/nodenv/nodenv-aliases?label=github&logo=github&sort=semver)](https://github.com/nodenv/nodenv-aliases/releases/latest)
