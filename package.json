@@ -27,7 +27,7 @@
     "start": "bin/nodenv-alias",
     "test": "bats ${CI:+--tap} test",
     "posttest": "npm run lint",
-    "lint": "git ls-files bin etc script */*.*sh | xargs shellcheck",
+    "lint": "git ls-files bin etc script test */*.*sh | xargs shellcheck",
     "postversion": "git push --follow-tags"
   },
   "dependencies": {
